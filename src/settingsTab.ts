@@ -16,7 +16,7 @@ export class PluginSettingsTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		containerEl.createEl("h2", { text: "Code Files Settings" });
+		containerEl.createEl("h2", { text: "Perfect table settings" });
 
 
 
