@@ -16,7 +16,7 @@ const renamePlugin = () => ({
 	setup(build) {
 		build.onEnd(async () => {
 			try {
-				fs.renameSync('main.css', 'styles.css');
+				fs.renameSync(dir + 'main.css', dir + 'styles.css');
 			} catch (e) {
 				console.error('Failed to rename file:', e);
 			}
@@ -25,6 +25,8 @@ const renamePlugin = () => ({
 });
 
 const prod = (process.argv[2] === "production");
+
+const dir = prod ? "./build/" : "./";
 
 const context = await esbuild.context({
 	banner: {
@@ -52,7 +54,7 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
+	//outfile: "main.js",
 	plugins: [
 		sassPlugin({
 			filter: /\.module\.scss$/,
@@ -61,6 +63,7 @@ const context = await esbuild.context({
 		sassPlugin(),
 		renamePlugin()
 	],
+	outdir: dir,
 });
 
 if (prod) {
