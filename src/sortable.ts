@@ -1,4 +1,4 @@
-import DataTable from "datatables.net";
+import DataTable from "datatables.net-dt";
 
 function shouldSort(htmlEl: HTMLElement): boolean {
 	// dataview table: parent must be a "dataview" HTMLTableElement
@@ -17,21 +17,14 @@ export function onHeadClick(evt: MouseEvent): void {
 		return;
 	}
 
-	const table = <HTMLTableElement>htmlEl.closest("table");
-
+	const table = htmlEl.closest("table");
 	if (table === null || table.hasClass("dataTable")) {
 		return;
 	}
-
-	const table2 = table.cloneNode();
+	//console.log(table.parentNode);
 
 	const t = new DataTable(table, {
 		lengthChange: true,
 		pageLength: 50
 	});
-
-	//const tt = <Node>t.table().container().parentNode;
-	//tt.empty();
-	//tt.appendChild(table);
-
 }
