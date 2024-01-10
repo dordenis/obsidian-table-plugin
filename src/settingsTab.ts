@@ -1,7 +1,5 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
 import TablePlugin from "./main";
-import {types} from "sass";
-import Number = types.Number;
 
 export class PluginSettingsTab extends PluginSettingTab {
 	plugin: TablePlugin;
@@ -19,6 +17,17 @@ export class PluginSettingsTab extends PluginSettingTab {
 		containerEl.createEl("h2", { text: "Perfect table settings" });
 
 
+		new Setting(containerEl)
+			.setName("Pagination")
+			.setDesc("Enable or disable table pagination.")
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.paging)
+					.onChange(async (value) => {
+						this.plugin.settings.paging = value;
+						await this.plugin.saveSettings();
+					})
+			);
 
 		new Setting(containerEl)
 			.setName("Page length")
@@ -28,6 +37,17 @@ export class PluginSettingsTab extends PluginSettingTab {
 				.onChange(async (value) => {
 					this.plugin.settings.pageLength = value
 					await this.plugin.saveSettings()
+				})
+			);
+
+		new Setting(containerEl)
+			.setName("length change")
+			.setDesc("Feature control the end user's ability to change the paging display length of the table.")
+			.addToggle((toggle) => toggle
+				.setValue(this.plugin.settings.lengthChange)
+				.onChange(async (value) => {
+					this.plugin.settings.lengthChange = value;
+					await this.plugin.saveSettings();
 				})
 			);
 
@@ -43,17 +63,6 @@ export class PluginSettingsTab extends PluginSettingTab {
 					})
 			);
 
-		new Setting(containerEl)
-			.setName("Pagination")
-			.setDesc("Enable or disable table pagination.")
-			.addToggle((toggle) =>
-				toggle
-					.setValue(this.plugin.settings.paging)
-					.onChange(async (value) => {
-						this.plugin.settings.paging = value;
-						await this.plugin.saveSettings();
-					})
-			);
 
 		new Setting(containerEl)
 			.setName("Ordering")
@@ -68,6 +77,17 @@ export class PluginSettingsTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
+			.setName("Multi ordering")
+			.setDesc("Multiple column ordering ability control (activated by shift-click by the user).")
+			.addToggle((toggle) => toggle
+				.setValue(this.plugin.settings.orderMulti)
+				.onChange(async (value) => {
+					this.plugin.settings.orderMulti = value;
+					await this.plugin.saveSettings();
+				})
+			);
+
+		new Setting(containerEl)
 			.setName("Information field")
 			.setDesc("Feature control table information display field.")
 			.addToggle((toggle) => toggle
@@ -77,5 +97,8 @@ export class PluginSettingsTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				})
 			);
+
+
+
 	}
 }

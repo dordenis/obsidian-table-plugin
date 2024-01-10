@@ -1,3 +1,4 @@
+
 export interface PluginSettings {
 	lengthChange: boolean;
 	pageLength: string;
@@ -5,13 +6,15 @@ export interface PluginSettings {
 	paging: boolean;
 	ordering: boolean;
 	info: boolean;
+	orderMulti: boolean;
 }
 
 export const DEFAULT_SETTINGS: Partial<PluginSettings> = {
-	lengthChange: true,
+	lengthChange: false,
 	pageLength: "25",
-	searching: true,
+	searching: false,
 	paging: true,
 	ordering: true,
 	info: true,
+	orderMulti: true,
 };

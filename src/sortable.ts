@@ -1,5 +1,5 @@
 import DataTable from "datatables.net-dt";
-import {PluginSettings} from "./settings";
+import {DEFAULT_SETTINGS, PluginSettings} from "./settings";
 
 export class Render {
 	public settings: Object;
@@ -25,6 +25,9 @@ export class Render {
 		if (el === null || el.hasClass("dataTable")) {
 			return;
 		}
+
+		console.log(this.settings)
+		console.log(DEFAULT_SETTINGS)
 
 		const table = new DataTable(el, this.settings);
 		this.tableStates.set(el, table)
