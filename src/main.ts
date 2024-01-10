@@ -27,7 +27,6 @@ export default class TablePlugin extends Plugin {
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
 		//this.settings.language = Russian
-		console.log(this.settings)
 	}
 
 	async saveSettings() {

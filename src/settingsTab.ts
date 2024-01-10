@@ -29,7 +29,7 @@ export class PluginSettingsTab extends PluginSettingTab {
 					})
 			);
 
-		new Setting(containerEl)
+		/*new Setting(containerEl)
 			.setName("Page length")
 			.setDesc("Change the initial page length (number of rows per page).")
 			.addText((value) => value
@@ -38,7 +38,7 @@ export class PluginSettingsTab extends PluginSettingTab {
 					this.plugin.settings.pageLength = value
 					await this.plugin.saveSettings()
 				})
-			);
+			);*/
 
 		new Setting(containerEl)
 			.setName("length change")

@@ -26,17 +26,12 @@ export class Render {
 			return;
 		}
 
-		console.log(this.settings)
-		console.log(DEFAULT_SETTINGS)
-
 		const table = new DataTable(el, this.settings);
 		this.tableStates.set(el, table)
 	}
 
 	public update(): void
 	{
-		console.log(this.tableStates)
-
 		this.tableStates.forEach(table => {
 			table.destroy()
 		})
