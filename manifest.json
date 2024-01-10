@@ -1,7 +1,7 @@
 {
 	"id": "perfect-table",
 	"name": "Perfect table",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"minAppVersion": "0.15.0",
 	"description": "Sorting, filtering and pagination for tables",
 	"author": "Denis Doroshenko",
