@@ -9,7 +9,7 @@ export interface PluginSettings {
 
 export const DEFAULT_SETTINGS: Partial<PluginSettings> = {
 	lengthChange: true,
-	pageLength: '2',
+	pageLength: "25",
 	searching: true,
 	paging: true,
 	ordering: true,
